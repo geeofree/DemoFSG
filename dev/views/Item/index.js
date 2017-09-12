@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { addToCart } from '../../actions/cart.actions'
 
 import ViewHOC from '../../HOC/view.hoc'
-import Navbar from '../../components/Routings/Navbar'
+import Navbar  from '../../components/Routings/Navbar'
+import Image   from '../../components/Image'
 
 const ItemView = ({ item, addToCart }) => (
 	<div id="item">
@@ -13,7 +14,9 @@ const ItemView = ({ item, addToCart }) => (
 
 		{ item && (
 			<div id="item-details">
-				<div className="item-img-container"></div>
+				<div className="item-img-container">
+					<Image src={item.image_url} />
+				</div>
 
 				<div className="item-info-container">
 					<h1 className="item-name">{item.name}</h1>

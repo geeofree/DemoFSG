@@ -6,7 +6,9 @@ import { showItem } from '../../actions/inventory.actions'
 
 import ViewHOC  from '../../HOC/view.hoc'
 import Navbar   from '../../components/Routings/Navbar'
+import Image    from '../../components/Image'
 import { Link } from 'react-router-dom'
+
 
 const InventoryView = ({ items, showItem }) => (
 	<div id="inventory">
@@ -15,7 +17,9 @@ const InventoryView = ({ items, showItem }) => (
 		{items.map((item, i) => (
 			<Link to="/item" key={i} onClick={() => showItem(item.id)}>
 				<div className="item">
-					<div className="item-img-container" />
+					<div className="item-img-container">
+						<Image src={item.image_url} />
+					</div>
 
 					<div className="item-detail-container">
 						<h1 className="item-name">{item.name}</h1>
