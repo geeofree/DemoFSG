@@ -1,8 +1,9 @@
 import React from 'react'
 import './cart.style.sass'
 
-import { connect } from 'react-redux'
+import { connect }     from 'react-redux'
 import { removeStock } from '../../actions/inventory.actions'
+import { clearCart }   from '../../actions/cart.actions'
 
 import ViewHOC     from '../../HOC/view.hoc'
 import Navbar      from '../../components/Routings/Navbar'
@@ -10,7 +11,7 @@ import Link        from '../../components/Routings/Link'
 import Image       from '../../components/Image'
 import CartSummary from './CartSummary'
 
-const CartView = ({ cart, removeStock }) => (
+const CartView = ({ cart, removeStock, clearCart }) => (
 	<div id="cart">
 		<Navbar>
 			<h1 style={{
@@ -48,10 +49,13 @@ const CartView = ({ cart, removeStock }) => (
 					))}
 				</div>
 
-				<CartSummary cart={cart} removeStock={removeStock} />
+				<CartSummary
+					cart={cart}
+					removeStock={removeStock}
+					clearCart={clearCart}/>
 			</div>
 		) || (
-			<h1>No item added in cart yet</h1>
+			<h1>You have no Items in your cart</h1>
 		)}
 	</div>
 )
@@ -59,7 +63,8 @@ const CartView = ({ cart, removeStock }) => (
 const mapStateToProps = ({ cart }) => ({ cart })
 
 const mapDispatchToProps = (dispatch) => ({
-	removeStock: (id, qty) => dispatch(removeStock(id, qty))
+	removeStock: (id, qty) => dispatch(removeStock(id, qty)),
+	clearCart: () => dispatch(clearCart())
 })
 
 const Cart = connect(mapStateToProps, mapDispatchToProps)(CartView)
