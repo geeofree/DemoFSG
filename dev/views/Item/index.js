@@ -4,45 +4,77 @@ import './item.style.sass'
 import { connect } from 'react-redux'
 import { addToCart } from '../../actions/cart.actions'
 
-import ViewHOC from '../../HOC/view.hoc'
-import Navbar  from '../../components/Routings/Navbar'
-import Image   from '../../components/Image'
+import ViewHOC     from '../../HOC/view.hoc'
+import Navbar      from '../../components/Routings/Navbar'
+import Image       from '../../components/Image'
+import DialogModal from './DialogModal'
 
-const ItemView = ({ item, addToCart }) => (
-	<div id="item">
-		<Navbar />
+class ItemView extends React.Component {
+	constructor(...args) {
+		super(...args)
 
-		{ item && (
-			<div id="item-details">
-				<div className="item-img-container">
-					<Image src={item.image_url} />
-				</div>
+		this.addItem = this.addItem.bind(this)
 
-				<div className="item-info-container">
-					<h1 className="item-name">{item.name}</h1>
-					<p className="item-price">
-						<span style={{ fontWeight: 'bold' }}>Price: </span>
-						&#8369;{item.price}
-					</p>
-					<p className="item-stock">
-						<span style={{ fontWeight: 'bold' }}>In stock: </span>
-						{item.stock}
-					</p>
-					<p className="item-description">{item.description}</p>
+		this.state = {
+			item: null,
+			showModal: false
+		}
+	}
 
-					<button
-						className="add-item-button"
-						onClick={() => addToCart(item)}>
-						Add to Cart
-					</button>
-				</div>
+	componentDidUpdate() {
+		const { item } = this.state
+		const { addToCart } = this.props
+
+		addToCart(item)
+	}
+
+	addItem(item) {
+		this.setState({ item, showModal: true })
+	}
+
+	render() {
+		const { showModal } = this.state
+		const { item } = this.props
+		const { addItem } = this
+
+		return (
+			<div id="item">
+				<Navbar />
+
+				{ item && (
+					<div id="item-details">
+						<div className="item-img-container">
+							<Image src={item.image_url} />
+						</div>
+
+						<div className="item-info-container">
+							<h1 className="item-name">{item.name}</h1>
+							<p className="item-price">
+								<span style={{ fontWeight: 'bold' }}>Price: </span>
+								&#8369;{item.price}
+							</p>
+							<p className="item-stock">
+								<span style={{ fontWeight: 'bold' }}>In stock: </span>
+								{item.stock}
+							</p>
+							<p className="item-description">{item.description}</p>
+
+							<button
+								className="add-item-button"
+								onClick={() => addItem(item)}>
+								Add to Cart
+							</button>
+						</div>
+					</div>
+				) || (
+					<h1>No item currently selected</h1>
+				)}
+
+				<DialogModal show={showModal}/>
 			</div>
-		) || (
-			<h1>No item currently selected</h1>
-		)}
-	</div>
-)
-
+		)
+	}
+}
 
 const mapStateToProps = ({ inventory }) => ({
 	item: inventory.selectedItem
