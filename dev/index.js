@@ -1,7 +1,15 @@
 import React    from 'react'
 import ReactDOM from 'react-dom'
 
-const Hello = () => <h1>Hello World!</h1>
-const root = document.getElementById('root')
+import { Provider } from 'react-redux'
+import AppState     from './app.state'
+import Application  from './app.main'
 
-ReactDOM.render(<Hello />, root)
+const DemoFSG = () => (
+	<Provider store={AppState}>
+		<Application />
+	</Provider>
+)
+
+const root = document.getElementById('root')
+ReactDOM.render(<DemoFSG />, root)
