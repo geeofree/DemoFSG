@@ -4,10 +4,10 @@ import './inventory.style.sass'
 import { connect }  from 'react-redux'
 import { showItem } from '../../actions/inventory.actions'
 
-import ViewHOC  from '../../HOC/view.hoc'
-import Navbar   from '../../components/Routings/Navbar'
-import Image    from '../../components/Image'
-import { Link } from 'react-router-dom'
+import ViewHOC from '../../HOC/view.hoc'
+import Navbar  from '../../components/Routings/Navbar'
+import Link    from '../../components/Routings/Link'
+import Image   from '../../components/Image'
 
 
 const InventoryView = ({ items, cartLength, showItem }) => (
@@ -20,7 +20,7 @@ const InventoryView = ({ items, cartLength, showItem }) => (
 			</h1>
 
 			<Link
-				to='/DemoFSG/cart'
+				to='/cart'
 				style={{
 				color: '#666',
 				padding: '5px',
@@ -31,7 +31,7 @@ const InventoryView = ({ items, cartLength, showItem }) => (
 		</Navbar>
 
 		{items.map((item, i) => (
-			<Link to="/DemoFSG/item" key={i} onClick={() => showItem(item.id)}>
+			<Link to="/item" key={i} onClick={() => showItem(item.id)}>
 				<div className="item">
 					<div className="item-img-container">
 						<Image src={item.image_url} />

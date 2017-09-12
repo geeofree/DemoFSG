@@ -6,9 +6,9 @@ import { addToCart } from '../../actions/cart.actions'
 
 import ViewHOC     from '../../HOC/view.hoc'
 import Navbar      from '../../components/Routings/Navbar'
+import Link        from '../../components/Routings/Link'
 import Image       from '../../components/Image'
 import DialogModal from './DialogModal'
-import { Link }    from 'react-router-dom'
 
 
 class ItemView extends React.Component {
@@ -48,7 +48,7 @@ class ItemView extends React.Component {
 						Item Details
 					</h1>
 					<Link
-						to='/DemoFSG'
+						to='/'
 						style={{
 						color: '#666',
 						padding: '5px',

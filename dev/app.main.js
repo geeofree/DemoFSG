@@ -12,9 +12,9 @@ import Page404   from './views/Page404'
 const Application = () => (
 	<Router>
 		<Switch>
-			<Inventory path='/DemoFSG' exact />
-			<Item path='/DemoFSG/item' />
-			<Cart path='/DemoFSG/cart' />
+			<Inventory path='/' exact />
+			<Item path='/item' />
+			<Cart path='/cart' />
 			<Page404 />
 		</Switch>
 	</Router>

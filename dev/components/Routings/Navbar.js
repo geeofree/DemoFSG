@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link  from './Link'
 
 const Navbar = ({ children }) => (
 	<div className="navbar">
-		<Link to="/DemoFSG">
+		<Link to="/">
 			<h1 id="logo">FooBar Shop</h1>
 		</Link>
 		{children}

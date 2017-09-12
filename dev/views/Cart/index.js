@@ -3,10 +3,10 @@ import './cart.style.sass'
 
 import { connect } from 'react-redux'
 
-import ViewHOC  from '../../HOC/view.hoc'
-import Navbar   from '../../components/Routings/Navbar'
-import Image    from '../../components/Image'
-import { Link } from 'react-router-dom'
+import ViewHOC from '../../HOC/view.hoc'
+import Navbar  from '../../components/Routings/Navbar'
+import Link    from '../../components/Routings/Link'
+import Image   from '../../components/Image'
 
 const CartView = ({ cart }) => (
 	<div id="cart">
@@ -18,7 +18,7 @@ const CartView = ({ cart }) => (
 			</h1>
 
 			<Link
-				to='/DemoFSG'
+				to='/'
 				style={{
 				color: '#666',
 				padding: '5px',
