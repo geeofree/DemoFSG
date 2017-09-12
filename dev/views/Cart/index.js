@@ -3,10 +3,11 @@ import './cart.style.sass'
 
 import { connect } from 'react-redux'
 
-import ViewHOC from '../../HOC/view.hoc'
-import Navbar  from '../../components/Routings/Navbar'
-import Link    from '../../components/Routings/Link'
-import Image   from '../../components/Image'
+import ViewHOC     from '../../HOC/view.hoc'
+import Navbar      from '../../components/Routings/Navbar'
+import Link        from '../../components/Routings/Link'
+import Image       from '../../components/Image'
+import CartSummary from './CartSummary'
 
 const CartView = ({ cart }) => (
 	<div id="cart">
@@ -40,21 +41,13 @@ const CartView = ({ cart }) => (
 
 							<h1 className="item-name">{item.name}</h1>
 							<p className="item-price">&#8369;{item.price}</p>
+							<p className="item-qty">{item.qty}</p>
+							<p className="item-total">&#8369;{item.total}</p>
 						</div>
 					))}
 				</div>
 
-				<div id="cart-summary">
-					<div className="column">
-						<h3>Total Items:</h3>
-						<p>{cart.length}</p>
-					</div>
-
-					<div className="column">
-						<h3>Total Amount:</h3>
-						<p>&#8369;{cart.map(item => item.price).reduce((a, b) => a + b)}</p>
-					</div>
-				</div>
+				<CartSummary cart={cart} />
 			</div>
 		) || (
 			<h1>No item added in cart yet</h1>
