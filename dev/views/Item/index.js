@@ -1,17 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import './item.style.sass'
+
+import { connect } from 'react-redux'
+import { addToCart } from '../../actions/cart.actions'
 
 import ViewHOC from '../../HOC/view.hoc'
 import Navbar from '../../components/Routings/Navbar'
 
-const ItemView = ({ item }) => (
+const ItemView = ({ item, addToCart }) => (
 	<div id="item">
 		<Navbar />
 
 		{ item && (
 			<div id="item-details">
 				<div className="item-img-container"></div>
+
 				<div className="item-info-container">
 					<h1 className="item-name">{item.name}</h1>
 					<p className="item-price">
@@ -23,6 +26,12 @@ const ItemView = ({ item }) => (
 						{item.stock}
 					</p>
 					<p className="item-description">{item.description}</p>
+
+					<button
+						className="add-item-button"
+						onClick={() => addToCart(item)}>
+						Add to Cart
+					</button>
 				</div>
 			</div>
 		) || (
@@ -36,6 +45,10 @@ const mapStateToProps = ({ inventory }) => ({
 	item: inventory.selectedItem
 })
 
-const Item = connect(mapStateToProps)(ItemView)
+const mapDispatchToProps = (dispatch) => ({
+	addToCart: (item) => dispatch(addToCart(item))
+})
+
+const Item = connect(mapStateToProps, mapDispatchToProps)(ItemView)
 
 export default ViewHOC(Item)
