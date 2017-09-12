@@ -12,7 +12,7 @@ const Application = () => (
 	<Router>
 		<Switch>
 			<Inventory path='/' exact />
-			<Item path='/item/:itemID' />
+			<Item path='/item' />
 			<Cart path='/cart' />
 			<Page404 />
 		</Switch>
