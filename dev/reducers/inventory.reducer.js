@@ -1,4 +1,7 @@
-import { SELECT_ITEM } from '../constants/inventory.constants'
+import {
+	SELECT_ITEM,
+	REMOVE_ITEM_STOCK
+} from '../constants/inventory.constants'
 
 const initialState = {
 	selectedItem: null,
@@ -42,7 +45,16 @@ export default (state=initialState, action) => {
 		case SELECT_ITEM:
 			return {
 				...state,
-				selectedItem: state.items.find((item) => item.id === action.payload.id)
+				selectedItem: state.items.find(item => item.id === action.payload.id)
+			}
+
+		case REMOVE_ITEM_STOCK:
+			return {
+				...state,
+				items: state.items.map(item => (item.id === action.payload.id ?
+					{...item, stock: item.stock - action.payload.qty } :
+					item
+				))
 			}
 
 		default:

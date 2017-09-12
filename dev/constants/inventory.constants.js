@@ -1,1 +1,2 @@
 export const SELECT_ITEM = 'SELECT_ITEM'
+export const REMOVE_ITEM_STOCK = 'REMOVE_ITEM_STOCK'

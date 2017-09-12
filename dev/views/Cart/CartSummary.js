@@ -29,12 +29,15 @@ class CartSummary extends React.Component {
 		event.preventDefault()
 
 		const { amount, payment } = this.state
+		const { removeStock, cart } = this.props
 		const change = payment - amount
 
 		if(change < 0) {
 			alert('Insufficient Payment Amount')
 			return
 		}
+
+		cart.forEach(({ id, qty }) => removeStock(id, qty))
 	}
 
 	render() {

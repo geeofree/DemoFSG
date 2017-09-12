@@ -2,6 +2,7 @@ import React from 'react'
 import './cart.style.sass'
 
 import { connect } from 'react-redux'
+import { removeStock } from '../../actions/inventory.actions'
 
 import ViewHOC     from '../../HOC/view.hoc'
 import Navbar      from '../../components/Routings/Navbar'
@@ -9,7 +10,7 @@ import Link        from '../../components/Routings/Link'
 import Image       from '../../components/Image'
 import CartSummary from './CartSummary'
 
-const CartView = ({ cart }) => (
+const CartView = ({ cart, removeStock }) => (
 	<div id="cart">
 		<Navbar>
 			<h1 style={{
@@ -47,7 +48,7 @@ const CartView = ({ cart }) => (
 					))}
 				</div>
 
-				<CartSummary cart={cart} />
+				<CartSummary cart={cart} removeStock={removeStock} />
 			</div>
 		) || (
 			<h1>No item added in cart yet</h1>
@@ -57,6 +58,10 @@ const CartView = ({ cart }) => (
 
 const mapStateToProps = ({ cart }) => ({ cart })
 
-const Cart = connect(mapStateToProps)(CartView)
+const mapDispatchToProps = (dispatch) => ({
+	removeStock: (id, qty) => dispatch(removeStock(id, qty))
+})
+
+const Cart = connect(mapStateToProps, mapDispatchToProps)(CartView)
 
 export default ViewHOC(Cart)
