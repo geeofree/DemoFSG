@@ -11,8 +11,6 @@ import Page404   from './views/Page404'
 
 const Application = () => (
 	<Router>
-		<h1 className="logo">Foobar Shop</h1>
-		
 		<Switch>
 			<Inventory path='/' exact />
 			<Item path='/item' />
