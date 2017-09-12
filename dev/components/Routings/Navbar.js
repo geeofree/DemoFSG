@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = ({ children }) => (
 	<div className="navbar">
-		<Link to="/">
+		<Link to="/DemoFSG">
 			<h1 id="logo">FooBar Shop</h1>
 		</Link>
 		{children}
