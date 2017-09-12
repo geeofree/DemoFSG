@@ -9,8 +9,8 @@ const DialogModal = (props) => (
 			<span style={{ color: '#2ed253' }}>✔</span>
 		</h1>
 		<div className="redirect-choice">
-			<Link to="/" className="redirect-btn home">← Browse Items</Link>
-			<Link to="/cart" className="redirect-btn cart">Check Cart →</Link>
+			<Link to="/DemoFSG" className="redirect-btn home">← Browse Items</Link>
+			<Link to="/DemoFSG/cart" className="redirect-btn cart">Check Cart →</Link>
 		</div>
 	</Modal>
 )

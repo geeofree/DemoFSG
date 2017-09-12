@@ -20,7 +20,7 @@ const InventoryView = ({ items, cartLength, showItem }) => (
 			</h1>
 
 			<Link
-				to='/cart'
+				to='/DemoFSG/cart'
 				style={{
 				color: '#666',
 				padding: '5px',
@@ -31,7 +31,7 @@ const InventoryView = ({ items, cartLength, showItem }) => (
 		</Navbar>
 
 		{items.map((item, i) => (
-			<Link to="/item" key={i} onClick={() => showItem(item.id)}>
+			<Link to="/DemoFSG/item" key={i} onClick={() => showItem(item.id)}>
 				<div className="item">
 					<div className="item-img-container">
 						<Image src={item.image_url} />

@@ -48,7 +48,7 @@ class ItemView extends React.Component {
 						Item Details
 					</h1>
 					<Link
-						to='/'
+						to='/DemoFSG'
 						style={{
 						color: '#666',
 						padding: '5px',

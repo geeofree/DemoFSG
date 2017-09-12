@@ -18,7 +18,7 @@ const CartView = ({ cart }) => (
 			</h1>
 
 			<Link
-				to='/'
+				to='/DemoFSG'
 				style={{
 				color: '#666',
 				padding: '5px',
