@@ -1,9 +1,22 @@
 import React from 'react'
 
+import { Switch } from 'react-router-dom'
+import Router from './components/Routings/Router'
+
+import Cart      from './views/Cart'
+import Item      from './views/Item'
+import Inventory from './views/Inventory'
+import Page404   from './views/Page404'
+
 const Application = () => (
-	<div className="app">
-		<h1>Hello World!</h1>
-	</div>
+	<Router>
+		<Switch>
+			<Inventory path='/' exact />
+			<Item path='/item/:itemID' />
+			<Cart path='/cart' />
+			<Page404 />
+		</Switch>
+	</Router>
 )
 
 export default Application
