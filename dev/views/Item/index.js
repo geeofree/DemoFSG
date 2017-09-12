@@ -78,11 +78,15 @@ class ItemView extends React.Component {
 							</p>
 							<p className="item-description">{item.description}</p>
 
-							<button
-								className="add-item-button"
-								onClick={() => addItem(item)}>
-								Add to Cart
-							</button>
+							{item.stock && (
+								<button
+									className="add-item-button"
+									onClick={() => addItem(item)}>
+									Add to Cart
+								</button>
+							) || (
+								<h3>Unavailable for purchase: Item out of stock</h3>
+							)}
 						</div>
 					</div>
 				) || (
