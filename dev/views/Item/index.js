@@ -8,6 +8,8 @@ import ViewHOC     from '../../HOC/view.hoc'
 import Navbar      from '../../components/Routings/Navbar'
 import Image       from '../../components/Image'
 import DialogModal from './DialogModal'
+import { Link }    from 'react-router-dom'
+
 
 class ItemView extends React.Component {
 	constructor(...args) {
@@ -39,7 +41,24 @@ class ItemView extends React.Component {
 
 		return (
 			<div id="item">
-				<Navbar />
+				<Navbar>
+					<h1 style={{
+						fontFamily: 'Roboto, sans-serif'
+					}}>
+						Item Details
+					</h1>
+					<Link
+						to='/'
+						style={{
+						color: '#666',
+						padding: '5px',
+						border: '1px solid',
+						margin: '0 4px'
+					}}>
+						← Browse Items
+					</Link>
+				</Navbar>
+
 
 				{ item && (
 					<div id="item-details">

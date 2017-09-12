@@ -10,9 +10,25 @@ import Image    from '../../components/Image'
 import { Link } from 'react-router-dom'
 
 
-const InventoryView = ({ items, showItem }) => (
+const InventoryView = ({ items, cartLength, showItem }) => (
 	<div id="inventory">
-		<Navbar />
+		<Navbar>
+			<h1 style={{
+				fontFamily: 'Roboto, sans-serif'
+			}}>
+				Inventory
+			</h1>
+
+			<Link
+				to='/cart'
+				style={{
+				color: '#666',
+				padding: '5px',
+				border: '1px solid'
+			}}>
+				My Cart({cartLength})
+			</Link>
+		</Navbar>
 
 		{items.map((item, i) => (
 			<Link to="/item" key={i} onClick={() => showItem(item.id)}>
@@ -39,8 +55,9 @@ const InventoryView = ({ items, showItem }) => (
 	</div>
 )
 
-const mapStateToProps = ({ inventory }) => ({
-	items: inventory.items
+const mapStateToProps = ({ inventory, cart }) => ({
+	items: inventory.items,
+	cartLength: cart.length
 })
 
 const mapDispatchToProps = (dispatch) => ({
