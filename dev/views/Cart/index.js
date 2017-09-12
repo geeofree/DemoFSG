@@ -52,7 +52,7 @@ const CartView = ({ cart }) => (
 
 					<div className="column">
 						<h3>Total Amount:</h3>
-						<p>{cart.map(item => item.price).reduce((a, b) => a + b)}</p>
+						<p>&#8369;{cart.map(item => item.price).reduce((a, b) => a + b)}</p>
 					</div>
 				</div>
 			</div>
